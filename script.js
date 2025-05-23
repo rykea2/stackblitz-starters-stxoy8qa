@@ -52,7 +52,7 @@ let TimerID = setInterval(() => {
   counting += 1
   if (counting === 10) {
     clearInterval(TimerID);
-    counting = 0;
+    counting = 0; ///Resets the counter, only needed if its inside another function & needs to activated multiple times///
   }
 }, 500)
 
