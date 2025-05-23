@@ -32,10 +32,15 @@ function delayincrease() {
 timesTwoButton.addEventListener('click', timesTwoCost);
 function timesTwoCost() {
   cost += cost;
-  displayCost.innerHTML = 'Current Cost = ' + cost;
+  displayCost.innerHTML = 'Cost = ' + cost;
 }
 
-function resetCost() {}
+function resetCost() {
+  cost = 100;
+  delay = 0;
+  displayCost.innerHTML = 'Cost: ' + cost
+  currentDelay.innerHTML = 'Delay: ' + delay
+}
 
 rockbutton.addEventListener('click', selectRock);
 paperbutton.addEventListener('click', selectPaper);
@@ -63,37 +68,47 @@ function computerChoice() {
   let computerNumber = choices[Math.floor(Math.random() * 3)];
   displayYourChoice.innerHTML = yourChoice;
   displayComputerChoice.innerHTML = computerNumber;
-  if (yourChoice === computerNumber) {
-    setTimeout(() => {
+  setTimeout(() => {  if (yourChoice === computerNumber) {
       displayResults.innerHTML = 'Its a draw!';
-    }, 500)
-    draw++;
-    cash += cost;
+      draw++;
+      displayDraw.innerHTML = 'Draw:' + draw;
+      cash += cost;
+
   } else if (computerNumber === 'rock' && yourChoice === 'paper') {
-    setTimeout(() => {displayResults.innerHTML = 'You win!'}, 500 + delay);
-    cash += cost * 2;
-    wins++;
+      displayResults.innerHTML = 'You win!';
+      wins++;
+      displayWins.innerHTML = 'Wins:' + wins;
+      cash += cost * 2;
+    
   } else if (computerNumber === 'paper' && yourChoice === 'scissors') {
-    setTimeout(() => {displayResults.innerHTML = 'You win!'}, 500 + delay);
-    cash += cost * 2;
-    wins++;
+      displayResults.innerHTML = 'You win!';
+      cash += cost * 2;
+      wins++;
+      displayWins.innerHTML = 'Wins:' + wins;
+
   } else if (computerNumber === 'paper' && yourChoice === 'rock') {
-    setTimeout(() => {displayResults.innerHTML = 'You win!'}, 500 + delay);
-    cash += cost * 2;
-    wins++;
+      displayResults.innerHTML = 'You win!';
+      cash += cost * 2;
+      wins++;
+      displayWins.innerHTML = 'Wins:' + wins;
   } else {
-    setTimeout(() => {displayResults.innerHTML = 'You lose!'}, 500 + delay);
-    displayResults.innerHTML = ''
+    displayResults.innerHTML = 'You lose!';
     loss++;
+    displayLoss.innerHTML = 'Loss:' + loss;
   }
-  displayCash.innerHTML = 'Cash =' + cash;
+  displayCash.innerHTML = 'Cash: ' + cash;
+  displayResults.innerHTML = ''
   cost = 100;
   console.log(cost,cash)
+  displayCost.innerHTML = 'Cost: ' + cost;
+    
+  }, 500 + delay);
+
 }
 
 ////
-displayCash.innerHTML = 'Cash:' + cash;
-displayCost.innerHTML = 'Cost:' + cost;
+displayCash.innerHTML = 'Cash: ' + cash;
+displayCost.innerHTML = 'Cost: ' + cost;
 displayWins.innerHTML = 'Wins:' + wins;
 displayLoss.innerHTML = 'Loss:' + loss;
 displayDraw.innerHTML = 'Draw:' + draw;
