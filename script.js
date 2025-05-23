@@ -64,7 +64,14 @@ function computerChoice() {
     displayResults.innerHTML = 'You lose!';
   }
   displayCash.innerHTML = 'Cash =' + cash;
-  cash = 100;
+  cost = 100;
+  console.log(cost,cash)
 }
 
 ////
+displayCash.innerHTML = 'Cash =' + cash;
+
+////////
+setTimeout(() => {computerChoice
+  
+}, 1000);
