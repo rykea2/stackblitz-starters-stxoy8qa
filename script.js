@@ -46,6 +46,16 @@ rockbutton.addEventListener('click', selectRock);
 paperbutton.addEventListener('click', selectPaper);
 scissorsbutton.addEventListener('click', selectScissors);
 
+let counting = 0 
+let TimerID = setInterval(() => {
+  console.log("I'm counting")
+  counting += 1
+  if (counting === 10) {
+    clearInterval(TimerID);
+    counting = 0;
+  }
+}, 500)
+
 function selectRock() {
   yourChoice = 'rock';
   setTimeout(computerChoice, 500);
@@ -68,11 +78,13 @@ function computerChoice() {
   let computerNumber = choices[Math.floor(Math.random() * 3)];
   displayYourChoice.innerHTML = yourChoice;
   displayComputerChoice.innerHTML = computerNumber;
-  setTimeout(() => {  if (yourChoice === computerNumber) {
+  setTimeout(() => {  
+    if (yourChoice === computerNumber) {
       displayResults.innerHTML = 'Its a draw!';
       draw++;
       displayDraw.innerHTML = 'Draw:' + draw;
       cash += cost;
+      console.log("heisa")
 
   } else if (computerNumber === 'rock' && yourChoice === 'paper') {
       displayResults.innerHTML = 'You win!';
@@ -97,12 +109,12 @@ function computerChoice() {
     displayLoss.innerHTML = 'Loss:' + loss;
   }
   displayCash.innerHTML = 'Cash: ' + cash;
-  displayResults.innerHTML = ''
   cost = 100;
   console.log(cost,cash)
   displayCost.innerHTML = 'Cost: ' + cost;
     
   }, 500 + delay);
+  displayResults.innerHTML = ''
 
 }
 
